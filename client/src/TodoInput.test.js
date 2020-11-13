@@ -1,10 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { TodoList } from "./components/TodoList";
+import { TodoInput } from "./components/TodoInput";
 
-describe("Todo", () => {
+describe("TodoInput", () => {
   it("renders correctly", () => {
-    const tree = renderer.create(<TodoList />).toJSON();
+    const tree = renderer.create(<TodoInput />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

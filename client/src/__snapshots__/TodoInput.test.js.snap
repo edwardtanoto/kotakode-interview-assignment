@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoInput renders correctly 1`] = `
+<form
+  className="mt-5"
+  onSubmit={[Function]}
+>
+  <div
+    className="d-flex justify-content-center"
+  >
+    <input
+      className="form-control"
+      onChange={[Function]}
+      placeholder="Add Task"
+      style={
+        Object {
+          "width": "400px",
+        }
+      }
+      type="text"
+      value=""
+    />
+    <button
+      className="btn btn-primary btn-small"
+      style={
+        Object {
+          "borderRadius": "0px",
+        }
+      }
+      type="submit"
+    >
+      +
+    </button>
+  </div>
+</form>
+`;
