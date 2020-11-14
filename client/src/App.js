@@ -5,6 +5,9 @@ import { TodoList } from './components/TodoList';
 import { TodoInput } from './components/TodoInput';
 
 function App() {
+  // can use context API
+  // or props drilling
+
   const [tasks, setTasks] = useState([])
   const [dailyTarget, setDailyTarget] = useState(5)
   const [level, setLevel] = useState(0)
@@ -38,7 +41,6 @@ function App() {
   const completedTask = tasks.length === 0 ? 0 : [...tasks].map(task => task.completed).reduce((a, b) => a + b)
   // The code prints out false/ true at first prints
 
-
   const totalTask = tasks.length
 
   const levelUp = () => {
@@ -47,22 +49,18 @@ function App() {
       window.alert(`Congrats! You've leveled up to Level ${level + 1}. You are now a ${role[level + 1]}, keep being productive!`)
     }
   }
-
-
-
   return (
     // Can be split into smaller components of Daily Targets and Achievements n Levels up
     <div className="container" >
       <div className="header">
         <h1 className="pt-5">Kotakode First Project</h1>
-
         <Row>
           <Col className="text-center">
             <p className="mt-5 ">
               Set your daily target
       <br />
-              {/* No negative validation*/}
-              <input value={dailyTarget} min={0} style={{ width: "200px", borderRadius: '10px', background: 'transparent' }} className="daily-form pl-3" type="number" placeholder="5" onChange={(e) => setDailyTarget(e.target.value)} />
+              {/* No negative validation */}
+              <input value={dailyTarget} min={1} onKeyDown={(e) => e.preventDefault()} style={{ width: "200px", borderRadius: '10px', background: 'transparent' }} className="daily-form pl-3" type="number" placeholder="5" onChange={(e) => setDailyTarget(e.target.value)} />
             </p>
           </Col>
           <Col xs={3} md={2}>
@@ -70,9 +68,8 @@ function App() {
             Role: {`${role[level]}`}
           </Col>
         </Row>
-
+        {/* can make it a JSON file */}
         <b>Achievements - Level Up</b>
-
         <ul>
           <li><b>Start the day</b> - Create task according your daily target (<span>{totalTask + '/' + dailyTarget}</span>)</li>
           <li><b>Prouductive Day</b> - Finish your daily target (<span>{completedTask + '/' + dailyTarget}</span>)</li>
