@@ -25,19 +25,16 @@ function App() {
     return
   };
 
-  const completeTask = (index, id) => {
+  const completeTask = (index) => {
     const confirm = window.confirm("Press OK to complete your task.")
     if (confirm) {
       const newTask = [...tasks];
-
       newTask[index].completed = !newTask[index].completed;
       setTasks(newTask);
       levelUp()
     }
     return
   };
-
-
   const completedTask = tasks.length === 0 ? 0 : [...tasks].map(task => task.completed).reduce((a, b) => a + b)
   // The code prints out false/ true at first prints
 
@@ -52,17 +49,19 @@ function App() {
   }
 
 
+
   return (
     // Can be split into smaller components of Daily Targets and Achievements n Levels up
     <div className="container" >
       <div className="header">
         <h1 className="pt-5">Kotakode First Project</h1>
+
         <Row>
           <Col className="text-center">
             <p className="mt-5 ">
               Set your daily target
       <br />
-              {/* Have not done the negative validaiton */}
+              {/* No negative validation*/}
               <input value={dailyTarget} min={0} style={{ width: "200px", borderRadius: '10px', background: 'transparent' }} className="daily-form pl-3" type="number" placeholder="5" onChange={(e) => setDailyTarget(e.target.value)} />
             </p>
           </Col>
@@ -75,14 +74,14 @@ function App() {
         <b>Achievements - Level Up</b>
 
         <ul>
-          <li><b>Intern's Sprit</b> - Create task according your daily target (<span>{totalTask + '/' + dailyTarget}</span>)</li>
+          <li><b>Start the day</b> - Create task according your daily target (<span>{totalTask + '/' + dailyTarget}</span>)</li>
           <li><b>Prouductive Day</b> - Finish your daily target (<span>{completedTask + '/' + dailyTarget}</span>)</li>
         </ul>
       </div>
       <TodoInput tasks={tasks} addTask={addTask} />
       <TodoList tasks={tasks} deleteTask={deleteTask} completeTask={completeTask} />
     </div >
-  );
+  )
 }
 
 export default App;

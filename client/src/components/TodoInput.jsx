@@ -23,7 +23,7 @@ export const TodoInput = ({ addTask, tasks }) => {
     return (
         <form onSubmit={onSubmit} className="mt-5">
             <div className="d-flex justify-content-center">
-                <input className="form-control" style={{ width: "400px" }} value={value} type="text" placeholder="Add Task" onChange={(e) => setValue(e.target.value)} />
+                <input className="form-control" style={{ width: "400px" }} value={value} type="text" placeholder="I want to buy apple" onChange={(e) => setValue(e.target.value)} />
                 <button className="btn btn-primary btn-small" style={{ borderRadius: '0px' }} type="submit">+</button>
             </div>
         </form >
