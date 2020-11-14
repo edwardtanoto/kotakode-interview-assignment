@@ -3,11 +3,12 @@ import './App.css';
 import { Row, Col } from 'react-bootstrap'
 import { TodoList } from './components/TodoList';
 import { TodoInput } from './components/TodoInput';
+import { Level } from './components/Level';
+import { DailyTarget } from './components/DailyTarget';
 
 function App() {
   // can use context API for better scaling and cleaner code
   // I'll use props drilling as first solution
-
   const [tasks, setTasks] = useState([])
   const [dailyTarget, setDailyTarget] = useState(5)
   const [level, setLevel] = useState(0)
@@ -50,22 +51,17 @@ function App() {
     }
   }
   return (
-    // Can be split into smaller components of Daily Targets and Achievements n Levels up
     <div className="container" >
       <div className="header">
         <h1 className="pt-5">Kotakode First Project</h1>
         <Row>
           <Col className="text-center">
             <p className="mt-5 ">
-              Set your daily target
-      <br />
-              {/* No negative validation */}
-              <input value={dailyTarget} min={1} onKeyDown={(e) => e.preventDefault()} style={{ width: "200px", borderRadius: '10px', background: 'transparent' }} className="daily-form pl-3" type="number" placeholder="5" onChange={(e) => setDailyTarget(e.target.value)} />
+              <DailyTarget dailyTarget={dailyTarget} setDailyTarget={setDailyTarget} />
             </p>
           </Col>
           <Col xs={3} md={2}>
-            Level: {`${level}`} <br />
-            Role: {`${role[level]}`}
+            <Level role={role} level={level} />
           </Col>
         </Row>
         {/* can make it a JSON file */}
