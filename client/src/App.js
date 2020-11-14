@@ -53,7 +53,7 @@ function App() {
   return (
     <div className="container" >
       <div className="header">
-        <h1 className="pt-5">Kotakode First Project</h1>
+        <h1 className="pt-5">Kotakode First Project (with Contex)</h1>
         <Row>
           <Col className="text-center">
             <p className="mt-5 ">
