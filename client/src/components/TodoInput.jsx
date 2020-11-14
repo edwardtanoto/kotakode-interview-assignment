@@ -1,29 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { GlobalContext } from '../context/GlobalState';
 
-export const TodoInput = ({ addTask, tasks }) => {
-    const [value, setValue] = useState('');
+export const TodoInput = () => {
+    const [title, setTitle] = useState('');
     const id = Math.floor(Math.random() * Date.now())
     let completed = false
+
+    const { addTask } = useContext(GlobalContext);
+
     const onSubmit = e => {
         e.preventDefault();
-        if (value.trim()) {
-            addTask(
-                value,
-                tasks,
+
+        if (title.trim()) {
+            const newTask = {
+                title,
                 id,
                 completed
-            );
+            };
+            addTask(newTask)
+            setTitle('')
         } else {
             window.alert('You have not add any item.')
-            setValue('')
+            setTitle('')
         }
-        setValue('')
     }
 
     return (
         <form onSubmit={onSubmit} className="mt-5">
             <div className="d-flex justify-content-center">
-                <input className="form-control" style={{ width: "400px" }} value={value} type="text" placeholder="I want to buy apple" onChange={(e) => setValue(e.target.value)} />
+                <input className="form-control" style={{ width: "400px" }} type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter text..." />
                 <button className="btn btn-primary btn-small" style={{ borderRadius: '0px' }} type="submit">+</button>
             </div>
         </form >
