@@ -5,8 +5,8 @@ import { TodoList } from './components/TodoList';
 import { TodoInput } from './components/TodoInput';
 
 function App() {
-  // can use context API
-  // or props drilling
+  // can use context API for better scaling and cleaner code
+  // I'll use props drilling as first solution
 
   const [tasks, setTasks] = useState([])
   const [dailyTarget, setDailyTarget] = useState(5)
